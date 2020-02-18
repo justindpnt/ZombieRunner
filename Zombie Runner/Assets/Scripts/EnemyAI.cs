@@ -8,6 +8,7 @@ public class EnemyAI : MonoBehaviour
 {
     [SerializeField] Transform target;
     [SerializeField] float chaseRange = 5f;
+    [SerializeField] float turnSpeed = 5f;
 
     NavMeshAgent navMeshAgent;
     float distanceToTarget = Mathf.Infinity;
@@ -34,21 +35,27 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    public void OnDamageTaken()
+    {
+        isProvoked = true;
+    }
+
 
     // Is the enemy close enough to attack
     private void EngageTarget()
     {
+        FaceTarget();
         if(distanceToTarget >= navMeshAgent.stoppingDistance)
         {
             ChaseTarget();
         }
-
         if(distanceToTarget <= navMeshAgent.stoppingDistance)
         {
             AttackTarget();
         }
     }
 
+    // Enemy persues player
     private void ChaseTarget()
     {
         GetComponent<Animator>().SetBool("attack", false);
@@ -56,10 +63,18 @@ public class EnemyAI : MonoBehaviour
         navMeshAgent.SetDestination(target.position);
     }
 
+    // Attack animation
     private void AttackTarget()
     {
         GetComponent<Animator>().SetBool("attack", true);
-        Debug.Log(name + " has seeked and is destroying " + target.name);
+    }
+
+    // Rotate the enemy to face the player when the player is inside the attack range
+    private void FaceTarget()
+    {
+        Vector3 direction = (target.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
     }
 
 

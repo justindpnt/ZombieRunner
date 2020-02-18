@@ -180,8 +180,10 @@ GameObject:
   - component: {fileID: 5400000}
   - component: {fileID: 13600000}
   - component: {fileID: 11400004}
+  - component: {fileID: 3711527688254623768}
+  - component: {fileID: 7691842620649248278}
   m_Layer: 0
-  m_Name: RigidBodyFPSController
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -301,6 +303,31 @@ MonoBehaviour:
     slowDownRate: 20
     airControl: 0
     shellOffset: 0
+--- !u!114 &3711527688254623768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 690a1bda46bf52947bf10f1dd8e63049, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitPoints: 100
+--- !u!114 &7691842620649248278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a50664439db30d49bf46857be03088e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1300852406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,6 +344,8 @@ MonoBehaviour:
   range: 100
   damage: 30
   muzzleFlash: {fileID: 1304735116529454281}
+  hitEffect: {fileID: 906767398408747450, guid: 00efd401023185446bf60d8475b2c2c8,
+    type: 3}
 --- !u!1 &4402759627247409625
 GameObject:
   m_ObjectHideFlags: 0
