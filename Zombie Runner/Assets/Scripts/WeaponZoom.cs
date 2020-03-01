@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 
 // This script controls the camera zoom on the scope in. Ideally, this and AimScript would be one class,
@@ -12,8 +13,17 @@ public class WeaponZoom : MonoBehaviour
     [SerializeField] Camera fpsCamera;
     [SerializeField] float zoomedOutFOV = 60f;
     [SerializeField] float zoomedInFOV = 45f;
+    [SerializeField] float zoomOutSensitivity = 2f;
+    [SerializeField] float zoomInSensitivity = .5f;
+
+    RigidbodyFirstPersonController fpsController;
 
     bool aimDownSightsToggle = false;
+
+    private void Start()
+    {
+        fpsController = GetComponent<RigidbodyFirstPersonController>();
+    }
 
     private void Update()
     {
@@ -24,11 +34,15 @@ public class WeaponZoom : MonoBehaviour
             {
                 aimDownSightsToggle = true;
                 fpsCamera.fieldOfView = zoomedInFOV;
+                fpsController.mouseLook.XSensitivity = zoomInSensitivity;
+                fpsController.mouseLook.YSensitivity = zoomInSensitivity;
             }
             else
             {
                 aimDownSightsToggle = false;
                 fpsCamera.fieldOfView = zoomedOutFOV;
+                fpsController.mouseLook.XSensitivity = zoomOutSensitivity;
+                fpsController.mouseLook.YSensitivity = zoomOutSensitivity;
             }
         } 
     }
