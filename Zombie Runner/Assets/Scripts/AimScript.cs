@@ -12,8 +12,8 @@ public class AimScript : MonoBehaviour
     [SerializeField] Canvas crosshair;
 
     //Vector3 aimDownSights = new Vector3(-.06f, -.045f, .4f); //The vector that makes it show correctly in unity fullscreen
-    Vector3 aimDownSights = new Vector3(0f, -.07f, .4f); //The vector that makes it show correctly in a web build
-    Vector3 hipFire = new Vector3(.158f, -.162f, .533f); 
+    public Vector3 aimDownSights = new Vector3(0f, -.07f, .4f); //The vector that makes it show correctly in a web build
+    public Vector3 hipFire = new Vector3(.158f, -.162f, .533f); 
 
 
     float aimSpeed = 100f;
