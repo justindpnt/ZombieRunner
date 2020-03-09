@@ -182,7 +182,6 @@ GameObject:
   - component: {fileID: 11400004}
   - component: {fileID: 3711527688254623768}
   - component: {fileID: 7691842620649248278}
-  - component: {fileID: 1647043951}
   - component: {fileID: 56814826}
   m_Layer: 0
   m_Name: Player
@@ -331,23 +330,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverCanvas: {fileID: 0}
---- !u!114 &1647043951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c3c26cebd0f6ab4b9de13c56ac5c1a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fpsCamera: {fileID: 2000000}
-  zoomedOutFOV: 60
-  zoomedInFOV: 30
-  zoomOutSensitivity: 2
-  zoomInSensitivity: 0.5
 --- !u!114 &56814826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,6 +343,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammoAmount: 10
+--- !u!114 &1111066660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40540305248207803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f2f1f0526966984e820ad61b7a83fc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crosshair: {fileID: 0}
+  aimDownSights: {x: 0, y: -0.07, z: 0.4}
+  hipFire: {x: 0.158, y: -0.162, z: 0.533}
 --- !u!114 &1300852406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,36 +377,6 @@ MonoBehaviour:
   hitEffect: {fileID: 906767398408747450, guid: 00efd401023185446bf60d8475b2c2c8,
     type: 3}
   ammoSlot: {fileID: 56814826}
---- !u!114 &7232841553628647593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 40540305248207803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f2f1f0526966984e820ad61b7a83fc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  crosshair: {fileID: 0}
-  aimDownSights: {x: 0, y: -0.07, z: 0.4}
-  hipFire: {x: 0.158, y: -0.162, z: 0.533}
---- !u!114 &1111066660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 40540305248207803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f2f1f0526966984e820ad61b7a83fc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  crosshair: {fileID: 0}
-  aimDownSights: {x: 0, y: -0.07, z: 0.4}
-  hipFire: {x: 0.158, y: -0.162, z: 0.533}
 --- !u!1 &4402759627247409625
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,6 +490,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carbine
       objectReference: {fileID: 0}
+    - target: {fileID: 2337074158997199750, guid: ada2587319194f542957a8c2ae277cb9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2568565370010790130, guid: ada2587319194f542957a8c2ae277cb9,
+        type: 3}
+      propertyPath: fpsCamera
+      value: 
+      objectReference: {fileID: 2000000}
+    - target: {fileID: 2568565370010790130, guid: ada2587319194f542957a8c2ae277cb9,
+        type: 3}
+      propertyPath: fpsController
+      value: 
+      objectReference: {fileID: 11400004}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
 --- !u!1 &40540305248207803 stripped
