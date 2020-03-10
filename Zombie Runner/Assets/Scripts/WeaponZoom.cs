@@ -3,11 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 
-
-// This script controls the camera zoom on the scope in. Ideally, this and AimScript would be one class,
-// however that proved to be a struggle for many hours until I learned the difference between 
-// transform.position, and transform.localposition. For now, it stays
-
 public class WeaponZoom : MonoBehaviour
 {
     [SerializeField] Camera fpsCamera;
