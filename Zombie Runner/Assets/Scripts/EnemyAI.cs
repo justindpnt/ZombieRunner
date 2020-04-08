@@ -14,6 +14,7 @@ public class EnemyAI : MonoBehaviour
     bool isProvoked = false;
     EnemyHealth health;
     Transform target;
+    CapsuleCollider zombieCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,8 @@ public class EnemyAI : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         health = GetComponent<EnemyHealth>();
         target = FindObjectOfType<PlayerHealth>().transform;
+        zombieCollider = GetComponent<CapsuleCollider>();
+
     }
 
     // Update is called once per frame
@@ -30,6 +33,7 @@ public class EnemyAI : MonoBehaviour
         {
             enabled = false;
             navMeshAgent.enabled = false;
+            zombieCollider.enabled = false;
         }
 
         distanceToTarget = Vector3.Distance(target.position, transform.position);

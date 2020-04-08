@@ -18,7 +18,19 @@ public class Weapon : MonoBehaviour
 
     bool canShoot = true;
 
-    
+    AudioSource fireSoundOne;
+    AudioSource fireSoundTwo;
+    AudioSource fireSoundThree;
+
+    private void Start()
+    {
+        AudioSource[] soundFiles = FindObjectsOfType<AudioSource>();
+        fireSoundOne = soundFiles[0];
+        fireSoundTwo = soundFiles[1];
+        fireSoundThree = soundFiles[2];
+    }
+
+
     void Update()
     {
         DisplayAmmo();
@@ -40,11 +52,32 @@ public class Weapon : MonoBehaviour
         if (ammoSlot.GetCurrentAmmo(ammoType) > 0)
         {
             PlayMuzzleFlash();
+            PlayGunFireSound();
             ProcessRayCast();
             ammoSlot.ReduceCurrentAmmo(ammoType);
         }
         yield return new WaitForSeconds(timeBetweenShots);
         canShoot = true;
+    }
+
+    private void PlayGunFireSound()
+    {
+        float soundindex = UnityEngine.Random.Range(0f, 10f);
+        if (soundindex < 3)
+        {
+            Debug.Log("1");
+            fireSoundOne.Play();
+        }
+        else if (soundindex >= 3 && soundindex <= 7)
+        {
+            Debug.Log("2");
+            fireSoundTwo.Play();
+        }
+        else if (soundindex > 7)
+        {
+            Debug.Log("3");
+            fireSoundThree.Play();
+        }
     }
 
     private void PlayMuzzleFlash()
