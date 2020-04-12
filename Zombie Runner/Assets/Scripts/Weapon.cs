@@ -11,10 +11,12 @@ public class Weapon : MonoBehaviour
     [SerializeField] float damage = 30f;
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitEffect;
+    [SerializeField] GameObject hitBlood;
     [SerializeField] Ammo ammoSlot;
     [SerializeField] AmmoType ammoType;
     [SerializeField] float timeBetweenShots = 0.5f;
     [SerializeField] TextMeshProUGUI ammoText;
+
 
     bool canShoot = true;
 
@@ -90,7 +92,15 @@ public class Weapon : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(FPCamera.transform.position, FPCamera.transform.forward, out hit, range))
         {
-            CreateHitImpact(hit);
+            if(hit.transform.tag == "Enemy")
+            {
+                GameObject impact = Instantiate(hitBlood, hit.point, Quaternion.LookRotation(hit.normal));
+                Destroy(impact, .1f);
+            }
+            else
+            {
+                CreateHitImpact(hit);
+            }
             EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
             if (target == null) return;
             target.takeDamage(damage);
