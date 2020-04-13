@@ -16,6 +16,9 @@ public class EnemyAI : MonoBehaviour
     Transform target;
     CapsuleCollider zombieCollider;
 
+    public AudioSource groan;
+    public AudioSource bulletImpact;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +27,8 @@ public class EnemyAI : MonoBehaviour
         target = FindObjectOfType<PlayerHealth>().transform;
         zombieCollider = GetComponent<CapsuleCollider>();
 
+        AudioSource[] sounds = GetComponents<AudioSource>();
+        bulletImpact = sounds[0];
     }
 
     // Update is called once per frame

@@ -26,7 +26,7 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
-        AudioSource[] soundFiles = FindObjectsOfType<AudioSource>();
+        AudioSource[] soundFiles = GetComponents<AudioSource>();
         fireSoundOne = soundFiles[0];
         fireSoundTwo = soundFiles[1];
         fireSoundThree = soundFiles[2];
@@ -68,17 +68,17 @@ public class Weapon : MonoBehaviour
         if (soundindex < 3)
         {
             Debug.Log("1");
-            fireSoundOne.Play();
+            fireSoundOne.PlayOneShot(fireSoundOne.clip);
         }
         else if (soundindex >= 3 && soundindex <= 7)
         {
             Debug.Log("2");
-            fireSoundTwo.Play();
+            fireSoundTwo.PlayOneShot(fireSoundTwo.clip);
         }
         else if (soundindex > 7)
         {
             Debug.Log("3");
-            fireSoundThree.Play();
+            fireSoundThree.PlayOneShot(fireSoundThree.clip);
         }
     }
 
@@ -95,7 +95,8 @@ public class Weapon : MonoBehaviour
             if(hit.transform.tag == "Enemy")
             {
                 GameObject impact = Instantiate(hitBlood, hit.point, Quaternion.LookRotation(hit.normal));
-                Destroy(impact, .1f);
+                AudioSource.PlayClipAtPoint(hit.transform.gameObject.GetComponent<EnemyAI>().bulletImpact.clip, hit.transform.position, .1F);
+                Destroy(impact, 3f);
             }
             else
             {
