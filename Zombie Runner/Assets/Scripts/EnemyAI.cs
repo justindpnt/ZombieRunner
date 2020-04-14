@@ -16,7 +16,7 @@ public class EnemyAI : MonoBehaviour
     Transform target;
     CapsuleCollider zombieCollider;
 
-    public AudioSource groan;
+    public AudioSource groanAudio;
     public AudioSource bulletImpact;
 
     // Start is called before the first frame update
@@ -29,6 +29,7 @@ public class EnemyAI : MonoBehaviour
 
         AudioSource[] sounds = GetComponents<AudioSource>();
         bulletImpact = sounds[0];
+        groanAudio = sounds[1];
     }
 
     // Update is called once per frame
@@ -36,6 +37,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (health.IsDead())
         {
+            groanAudio.Stop();
             enabled = false;
             navMeshAgent.enabled = false;
             zombieCollider.enabled = false;
@@ -50,6 +52,7 @@ public class EnemyAI : MonoBehaviour
         else if(distanceToTarget <= chaseRange)
         {
             isProvoked = true;
+            groanAudio.Play();
         }
     }
 

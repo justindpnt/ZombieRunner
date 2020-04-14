@@ -23,6 +23,7 @@ public class Weapon : MonoBehaviour
     AudioSource fireSoundOne;
     AudioSource fireSoundTwo;
     AudioSource fireSoundThree;
+    AudioSource dryFire;
 
     private void Start()
     {
@@ -30,6 +31,7 @@ public class Weapon : MonoBehaviour
         fireSoundOne = soundFiles[0];
         fireSoundTwo = soundFiles[1];
         fireSoundThree = soundFiles[2];
+        dryFire = soundFiles[3];
     }
 
 
@@ -58,8 +60,18 @@ public class Weapon : MonoBehaviour
             ProcessRayCast();
             ammoSlot.ReduceCurrentAmmo(ammoType);
         }
+        else
+        {
+            Debug.Log("i am here");
+            PlayDryFireSound();
+        }
         yield return new WaitForSeconds(timeBetweenShots);
         canShoot = true;
+    }
+
+    private void PlayDryFireSound()
+    {
+        dryFire.PlayOneShot(dryFire.clip);
     }
 
     private void PlayGunFireSound()
